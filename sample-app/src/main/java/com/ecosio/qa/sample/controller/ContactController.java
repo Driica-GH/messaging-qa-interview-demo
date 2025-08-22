@@ -228,8 +228,8 @@ public class ContactController {
         .values()
         .stream()
         .filter(p -> StringUtils.containsIgnoreCase(p.getFirstname(), firstname))
-//        .findFirst()
-//        .stream()
+        .findFirst()
+        .stream()
         .toList();
   }
 
