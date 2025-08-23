@@ -2,6 +2,7 @@ package com.ecosio.messaging.task.testcase;
 
 import com.ecosio.messaging.task.model.Contact;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,10 +18,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 // TODO: think of a few different tests (including/excluding the ones here)
 //  you would implement and why
+
 @Slf4j
 public class ContactTest extends BaseTest {
 
     @Test
+    @DisplayName("Get list of all contacts & their amount")
     void allContacts() throws IOException {
 
         // get all available contacts
@@ -36,6 +39,7 @@ public class ContactTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Update existing contact")
     void updateContact() throws IOException {
 
         // get specific contact
@@ -65,7 +69,7 @@ public class ContactTest extends BaseTest {
                         && contact.getLastname().equals(updatedContact.getLastname())).toList();
 
         assertThat(updatedContacts.size())
-                .as("number of contacts after update")
+                .as("number of updated contacts")
                 .isOne();
 
         // verify that the old contact is no longer on the list
@@ -75,7 +79,7 @@ public class ContactTest extends BaseTest {
                         && contact.getLastname().equals(contactBefore.getLastname())).toList();
 
         assertThat(beforeContacts.size())
-                .as("number of contacts after update")
+                .as("number of contacts matching previous parameters")
                 .isZero();
 
         // test clean up
@@ -87,6 +91,7 @@ public class ContactTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Get all contacts with a specific string in Firstname")
     void getContactByFirstname() throws IOException {
 
         // TODO: get ALL contacts with the string "name" in it and add assertions
@@ -94,29 +99,31 @@ public class ContactTest extends BaseTest {
         log.info("all contacts: {}", contacts);
 
         // This test will always fail, given that the method findByFirstName in
-        // the ContactController.java uses .findFirst method - Justyna
+        // the ContactController.java uses .findFirst method
         assertThat(contacts.size())
                 .as("number of contacts")
                 .isEqualTo(2);
     }
 
     @Test
+    @DisplayName("Get all contacts matching provided Lastname")
     void getContactByLastName() throws IOException {
 
         List<Contact> contacts = getContactByLastname("Testb");
         log.info("all contacts: {}", contacts);
 
         // This test will always fail, given that the method findByLastName in
-        // the ContactController.java compares first name to last name instead - Justyna
+        // the ContactController.java compares first name to last name instead
         assertThat(contacts.size())
                 .as("number of contacts")
                 .isEqualTo(1);
     }
 
     @Test
+    @DisplayName("Create and delete a contact")
     void addNewContact() throws IOException {
 
-        Contact newContact = new Contact(4, "newFirstName", "newLastName");
+        Contact newContact = new Contact(3, "newFirstName", "newLastName");
         addContact(newContact);
 
         // verify that a new contact is on the list
@@ -126,7 +133,7 @@ public class ContactTest extends BaseTest {
                         && contact.getLastname().equals(newContact.getLastname())
                         && contact.getId()== newContact.getId()).toList();
 
-        // verify that one new contact has been added
+        // verify that only one new contact has been added
         assertThat(addedContacts.size())
                 .as("number of created contacts")
                 .isOne();

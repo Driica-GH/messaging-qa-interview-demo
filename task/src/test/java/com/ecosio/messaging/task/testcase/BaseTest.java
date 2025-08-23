@@ -102,7 +102,6 @@ public class BaseTest {
             log.info("Response: {}", responseBody);
         }
 
-
     }
 
     /**
@@ -138,7 +137,6 @@ public class BaseTest {
             log.info("Status: {}", response.getStatusLine().getStatusCode());
             log.info("Response: {}", responseBody);
         }
-
 
     }
 
@@ -197,6 +195,8 @@ public class BaseTest {
      * @param httpRequestBase
      * @return list of contacts based on the request
      * @throws IOException
+     * I was unable to make the original connectionHelper work for Delete endpoint, since it always expects a List in the response,
+     * so I duplicated it and adjusted to be able to handle TypeReference<Contact> in the response.
      */
     private Contact connectionHelperDelete(HttpRequestBase httpRequestBase) throws IOException {
 
