@@ -11,6 +11,7 @@ High-level testing strategy for Contact endpoint.
      * expected status codes
      * expected error codes
      * response structure 
+     * understand business requirements, value and importance
    * Clarify missing information:
      * can either of the 3 parameters in createOrUpdate endpoint be missing, if one wants to only update lastname for example
      * is there a max length for firstname/lastname
@@ -23,6 +24,7 @@ High-level testing strategy for Contact endpoint.
    * Functional testing - are CRUD operations behaving as expected, positive and negative cases
    * Non-functional testing - performance, how does app behave when there is a really large amount of contacts
    * Exploratory testing - check for edge cases
+   * Request a QA endpoint with capability to inject larger amount of records on non-production environments
    * Request a QA endpoint with capability to delete all records on non-production environments
 3. Test documentation
    * create a high-level test cases that cover the known capabilities, can be in a form of checklist initially
