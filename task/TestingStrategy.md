@@ -26,6 +26,7 @@ High-level testing strategy for Contact endpoint.
    * Exploratory testing - check for edge cases
    * Request a QA endpoint with capability to inject larger amount of records on non-production environments
    * Request a QA endpoint with capability to delete all records on non-production environments
+   * create potential test data
 3. Test documentation
    * create a high-level test cases that cover the known capabilities, can be in a form of checklist initially
    * expand the test cases as the clarifications for missing information gets available
